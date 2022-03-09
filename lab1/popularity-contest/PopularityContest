@@ -1,0 +1,16 @@
+# Popularity Contest
+
+# Turning these two lines into one line
+friends = int(input("Enter the amount of friends: "))
+friendship = int(input("Enter the pairs of friends: "))
+
+# Collecting pairs
+for x in range(friendship):
+    print(x)
+
+# The popularity factor
+if friendship == 0:
+    for x in range(1, friends+1):
+        print(0-x)
+else:
+    print("Not done yet")
