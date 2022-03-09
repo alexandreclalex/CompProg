@@ -13,7 +13,7 @@ def read_file(path):
                 line = f.readline()
 
                 for j in range(grid_size):
-                    l2.append(line[j])
+                    l2.append(int(line[j]))
 
                 l1.append(l2)
 
@@ -21,62 +21,59 @@ def read_file(path):
 
     return game_grids
 
-def search_neighbors(board, color, x=0, y=0, checked=[], occurrences_dict={}, current_arr=[]):
-    current_color = board[y][x]
+def search_neighbors(board, color, x=0, y=0, checked=[], occurrences=[], current_arr=[]):
+    #print(f"Searching ({x}, {y})")
     size = len(board[0])
 
-    if (x,y) not in checked:
-        checked.append(x,y)
+    if (x >= 0 and x < size) and (y >= 0 and y < size) and (x,y) not in checked:
+        checked.append((x,y))
 
+        current_color = board[y][x]
+       
         if current_color == color:
             current_arr.append((x, y))
+
+            (occurrences, current_arr) = search_neighbors(board, color, x, y-1, checked, occurrences, current_arr)
+
+            #(occurrences, current_arr) = search_neighbors(board, color, x+1, y-1, checked, occurrences, current_arr)
+            
+            (occurrences, current_arr) = search_neighbors(board, color, x+1, y, checked, occurrences, current_arr)
+            
+            #(occurrences, current_arr) = search_neighbors(board, color, x+1, y+1, checked, occurrences, current_arr)
+            
+            (occurrences, current_arr) = search_neighbors(board, color, x, y+1, checked, occurrences, current_arr)
+            
+            #(occurrences, current_arr) = search_neighbors(board, color, x-1, y+1, checked, occurrences, current_arr)
+            
+            (occurrences, current_arr) = search_neighbors(board, color, x-1, y, checked, occurrences, current_arr)
+            
+            #(occurrences, current_arr) = search_neighbors(board, color, x-1, y-1, checked, occurrences, current_arr)
         else:
-            occurrences_dict[current_color] = occurrences_dict.get(current_color, 0) + 1
+            occurrences.append(current_color)
 
-        if (y - 1) >= 0: # Search top center
-            search_neighbors(board, color, x, y-1, occurrences_dict, current_arr)
-
-        if (y - 1) >= 0 and (x + 1) <= size: # Search top right
-            search_neighbors(board, color, x+1, y-1, occurrences_dict, current_arr)
-
-        if (x + 1) <= size: # Search center right
-            search_neighbors(board, color, x+1, occurrences_dict, current_arr)
-
-        if (y + 1) <= size and (x + 1) <= size: # Search bottom right
-            search_neighbors(board, color, x+1, y+1, occurrences_dict, current_arr)
-
-        if (y + 1) <= size: # Search bottom center
-            search_neighbors(board, color, x, y+1, occurrences_dict, current_arr)
-
-        if (y + 1) <= size and (x - 1) >= 0: # Search bottom left
-            search_neighbors(board, color, x-1, y+1, occurrences_dict, current_arr)
-
-        if (x - 1) >= 0: # Search center left
-            search_neighbors(board, color, x-1, y, occurrences_dict, current_arr)
-
-        if (y - 1) >= 0 and (x - 1) >= 0: # Search top left
-            search_neighbors(board, color, x-1, y-1, occurrences_dict, current_arr)
-
-    return occurrences_dict, current_arr
-
-
-    
+    return occurrences, current_arr
 
 
 def play_game(board):
     steps = {}
 
-    while True:
-        occurrences_dict, current_arr = search_neighbors(board, board[0][0])
+    for i in range(5):
+        occurrences, current_arr = search_neighbors(board, board[0][0], 0, 0, [], [], [])
 
         if len(current_arr) == len(board[0]) ** 2:
             return steps
+
+        occurrences_dict = {}
+        for element in occurrences:
+            occurrences_dict[element] = occurrences_dict.get(element, 0) + 1
 
         max_val = (1, 0)
         for key in occurrences_dict.keys():
             val = occurrences_dict[key]
             if val > max_val[1]:
                 max_val = (key, val) 
+            elif val == max_val[1] and key < max_val[0]:
+                max_val = (key, val)
 
         for (x, y) in current_arr:
             board[y][x] = max_val[0]
@@ -86,12 +83,14 @@ def play_game(board):
 
 
 def main():
-    game_grids = read_file("sample-input.txt")
+    game_grids = read_file("lab1/flood-it/sample-input.txt")
     
     for game in game_grids.keys():
         game_board = game_grids[game]
 
-        play_game(game_board)
+        steps = play_game(game_board)
+
+        print(steps)
 
 
 if __name__ == "__main__":
