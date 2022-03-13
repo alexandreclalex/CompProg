@@ -40,15 +40,42 @@ Flood It
             #TODO: Add detail for array implementation
 
         Tree:
-            
+            First, the tree is initialized in an array, such that each node knows its neighbors
+            We then play the best move, over and over again, until the game is over, and record the moves we play:
+                Start at the Root node
+                For all neighbors to the node, if they have not been visited, visit them, and add them to the set of visited nodes.
+                    If they are equal to Root, restart search starting from the node
+                    If they are not equal to root, recursively visit all neighbors that have the same number and add them to the list of visited nodes.
+                
+                Now, we have a set of all nodes that are reachable in the next move.
+                We then find the most common number in the set (other than the root number). This is the number we will play. In ties, we pick the lower number.
+                If all counts besides the root number are 0, we know the game is over, and do not need to play.
+                In order to play, we iterate through the set, and change the number of nodes matching the root number to the number we play.
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        We did not finish in the class period. Here is our results from after class.
+        Array:
+            #TODO: Add Kattis results
+        Tree:
+            8599512	2022-03-09 22:12:50	Flood-It	✅Accepted	0.35 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
+        Array:
+            #TODO: Add runtime complexity
+        
+        Tree:
+            n = size of board
+            m = number of moves to complete game (This is variable based on board size. Since there are only 6 colors, if n >= 3, the computation becomes non-trivial. I guess it is between nlogn and n^2 but am not sure - Alex)
+
+            Runtime: O(n^2 * m)
+            Memory: O(n^2)
 
     What optimizations (if any) did you implement?
+        Tree:
+            Having the tree initialized once helped a lot with time complexity
 
     How did other programming languages (if used) affect your submission results?
+        Python's sets and fast "in" operator really helped this problem, as "in" is called a lot.
 
 
 Flow Layout
