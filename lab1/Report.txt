@@ -1,0 +1,80 @@
+Alexandre Clavel
+David Yang
+Nathan Dupont
+
+Cinema Crowds
+    Document what the problem is asking for in your own words
+        We are asked to solve a problem scheduling groups into a movie theater, and are asked to report the number of groups that must be turned away from the theater.
+        
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        I stored the group sizes in an array, and the remaining capacity in an int.
+        My algorithm is as follows:
+            For each group, check if it is less than the remaining capacity in the theater
+                If it is, remove capacity from the remaining capacity equal to the group sizes
+                Otherwise, add 1 to the number of rejected groups
+            Return the number of rejected groups
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8598665	2022-03-09 18:47:06	Cinema Crowds   ✅Accepted	0.05 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of groups that want to enter the Cinema
+        Runtime: O(n)
+        Memory: O(n)
+
+    What optimizations (if any) did you implement?
+        With my implementation in Python, the string is not parsed until needed, which I believe provides a marginal improvment.
+
+    How did other programming languages (if used) affect your submission results?
+        Python's built in map was very useful in my implementation. In additon, Python's Input() was very easy to use to read input.
+
+
+Flood It
+    Document what the problem is asking for in your own words
+        This problem had us implement a simple greedy solver for the game flood-it. We would then output the number of turns it took the greedy solver.
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        We had 2 implementations for this problem, an array-based implementation and a tree (technically graph) based approach
+
+        Array:
+            #TODO: Add detail for array implementation
+
+        Tree:
+            
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+    What is the runtime complexity and memory complexity of your solution?
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+
+Flow Layout
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+    What is the runtime complexity and memory complexity of your solution?
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+
+Popularity Contest
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+    What is the runtime complexity and memory complexity of your solution?
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
