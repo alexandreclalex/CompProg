@@ -102,16 +102,28 @@ Flood It
 
 Flow Layout
     Document what the problem is asking for in your own words
+        This problem involves aligning a number of panes into rows with a maximum width, and finding the space taken up by the windows
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        First we read in the maximum width of the pane, and load all of the window dimensions into an 2d array
+        Then we iterate through the windows
+            First check if the window fits in the row.
+                If it does, make sure to check if the height of the row changes
+                If it does not, make a new row, and add the height of the last row to the total height
+        Finally add the height of the last row to the total height
+        print out the results, repeat for all panes in the problem
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8598816	2022-03-09 19:14:57	Flow Layout ✅Accepted	0.06 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
+        n = number of windows
+
+        Runtime: O(n)
+        Memory: O(n)
 
     What optimizations (if any) did you implement?
-
-    How did other programming languages (if used) affect your submission results?
+        None implemented, but there is potential for speedup with I/O
 
 
 Popularity Contest
