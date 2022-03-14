@@ -94,14 +94,17 @@ Flow Layout
 
 Popularity Contest
     Document what the problem is asking for in your own words
+       This problem is looking for the marketability coefficient of each friend in an attempt to figure out how many friends know one another. Obtaining input from            the user will require the first line to contain N, the number of friends and M, the number of friendships among those friends. Each i'th friend is given a              success factor i. Next task would be to calculate the popularity factor Pi by determining how many friends each one has. Lastly, to find the marketability              coefficient for each friend, find the difference between the popularity factor and success factor.
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+       To accomplish this task, we used while loops and for loops to check for edge cases and iterate through an array. The first step was to get all necessary                information to process such as the number of friends, number of friendships and the popularity factor. The popularity factor is done by storing the number of          times a success factor appears in the pairs given by input. Using the popularity and success factor, we are able to determine each friend’s marketability              coefficient.
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8599247	2022-03-09 22:12:50	Popularity Contest	✅Accepted	0.52 s	Python 3
     What is the runtime complexity and memory complexity of your solution?
-
+        Memory: O(n)
+        Runtime: O(n)
     What optimizations (if any) did you implement?
+        Instead of having multiple for loops to read in data, process data, then print it. Doing it all in one for loop seems to optimize the program.
 
-    How did other programming languages (if used) affect your submission results?
 
