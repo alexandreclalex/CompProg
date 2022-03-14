@@ -37,7 +37,23 @@ Flood It
         We had 2 implementations for this problem, an array-based implementation and a tree (technically graph) based approach
 
         Array:
-            #TODO: Add detail for array implementation
+            Starting the array-based solution, the map is parsed into a 2-dimensional array, matching the grid layout.
+            Start at the root node
+                For all unvisited neighbors of the node
+                    Mark the node as visited
+                    If they are the same color, add them to the path and restart the search from the new node
+                    If they are a different color, add them to a list of neighbors
+
+            With all of the nodes in the current path and their neighbors recorded, search for the largest possible path we can make in the next turn.
+
+            For each of the neighbors identified above
+                Look for all nodes not on the previous path that are the same color as the current node
+                Record the length of the colored path 
+
+            We can then take the total length of paths in each color to determine the largest possible increase during the next turn, which will be our next move. 
+
+            We then iterate over this logic for each turn of the game, and for each game in the set.
+            
 
         Tree:
             First, the tree is initialized in an array, such that each node knows its neighbors
@@ -55,13 +71,19 @@ Flood It
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
         We did not finish in the class period. Here is our results from after class.
         Array:
-            #TODO: Add Kattis results
+            8624783	2022-03-14 03:55:45 Flood-It	✅Accepted	0.34 s	Python 3
         Tree:
             8599512	2022-03-09 22:12:50	Flood-It	✅Accepted	0.35 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
         Array:
-            #TODO: Add runtime complexity
+            n = Size of board
+            m = Number of moves to complete game (same idea as below)
+            
+            Runtime: O(n^2 * m) 
+            Memory: O(n^2)
+
+            In the worst case, working with 6 in an n-size board, each turn will take O(m) time, with a board size of O(n^2). In worst case, each move will take a total of n^2 squares, with a total of m moves.
         
         Tree:
             n = size of board
