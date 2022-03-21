@@ -58,8 +58,35 @@ Odd A’s, Even B’s
 
 Varied Amusements
     Document what the problem is asking for in your own words
+        Given n rides to ride and A, B, and C number of each rides, what is the number of possible ways to ride n rides without repeating ride types
+
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        I used a recursive solution with a cache to store previously calculated results
+        First, check if we have a cache hit, if so, return the cached result.
+        Next, check if we have reached the total number of rides, if so, return 1
+
+        Next, conditional on the last ride we rode:
+            If we just rode a, we can now ride b or c
+            If we just rode b, we can now ride a or c
+            If we just rode c, we can now ride a or b
+            If we have not ridden a ride yet, we can ride all rides.
+
+        Then, cache and return the result
+        
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        During lab:
+        8639094	2022-03-16 18:21:18	Varied Amusements	✅Accepted (1)	> 1.00 s	Python 3
+        After lab:
+        8639459	2022-03-16 19:44:05	Varied Amusements	✅Accepted (2)	0.06 s	Python 3
+
     What is the runtime complexity and memory complexity of your solution?
+        Runtime: O(n)
+            Since we cache the result, and the time to calculate one cache entry is constant, we have the smae complexity for runtime as memory.
+        Memory: O(n)
+            With caching, we have at most n * 3 cache entries, one for each length and each last ridden ride
+
     What optimizations (if any) did you implement?
+        Caching the result greatly improved runtime, at the cost of memory
+
     How did other programming languages (if used) affect your submission results?
+        Python dict was useful to make easy cache
