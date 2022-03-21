@@ -2,3 +2,34 @@ Alexandre Clavel
 David Yang
 Nathan Dupont
 
+Hailstone Sequences
+    Document what the problem is asking for in your own words
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+    What is the runtime complexity and memory complexity of your solution?
+    What optimizations (if any) did you implement?
+    How did other programming languages (if used) affect your submission results?
+
+Hermits
+    Document what the problem is asking for in your own words
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+    What is the runtime complexity and memory complexity of your solution?
+    What optimizations (if any) did you implement?
+    How did other programming languages (if used) affect your submission results?
+
+Odd A’s, Even B’s
+    Document what the problem is asking for in your own words
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+    What is the runtime complexity and memory complexity of your solution?
+    What optimizations (if any) did you implement?
+    How did other programming languages (if used) affect your submission results?
+
+Varied Amusements
+    Document what the problem is asking for in your own words
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+    What is the runtime complexity and memory complexity of your solution?
+    What optimizations (if any) did you implement?
+    How did other programming languages (if used) affect your submission results?
