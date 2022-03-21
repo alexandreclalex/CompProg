@@ -12,14 +12,31 @@ Hailstone Sequences
 
 Hermits
     Document what the problem is asking for in your own words
+        Given populations of streets, and intersections of streets, find the street with the least population on itself and all adjoining streets
+
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Populations were stored in an array
+        Street intersections were stored in a 2d array
+
+        We iterate through the indices, and add the populations of the other streets at crossings
+        We then find the minimum adjoining population and print out the corresponding street
+
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8638778	2022-03-16 17:24:17	Hermits	✅Accepted	0.35 s	Python 3
+
     What is the runtime complexity and memory complexity of your solution?
+        n = number of street intersections. The algorithm may be bound by the number of streets m, 
+        but since n can be <= m(m-1)/2, in the worst case, the algorithm is bounded by the number of intersections.
+        
+        Runtime: O(n)
+            We need to iterate through all of the intersections to calculate the solution
+        Memory: O(n)
+            We need to read in all intersections, and store them in an array of dimenstions m * 2
+
     What optimizations (if any) did you implement?
-    How did other programming languages (if used) affect your submission results?
+        Optimizes data in by using sys.stdin.readline rather than builtin input. We would probably TLE if using input.
 
 Odd A’s, Even B’s
-
     Document what the problem is asking for in your own words
         Given length n, how many strings of {a, b} can be made where a's are always in odd groups and b's are always in even groups
 
@@ -45,6 +62,7 @@ Odd A’s, Even B’s
         8638915	2022-03-16 17:47:35	Odd A's, Even B's	✅Accepted	0.06 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
+        n = given length
         Runtime: O(n)
             Since we cache the result, and the time to calculate one cache entry is constant, we have the smae complexity for runtime as memory.
         Memory: O(n)
@@ -80,6 +98,7 @@ Varied Amusements
         8639459	2022-03-16 19:44:05	Varied Amusements	✅Accepted (2)	0.06 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
+        n = given length
         Runtime: O(n)
             Since we cache the result, and the time to calculate one cache entry is constant, we have the smae complexity for runtime as memory.
         Memory: O(n)
