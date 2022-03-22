@@ -15,10 +15,17 @@ def parse_inputs():
     return (num_rides, num_a, num_b, num_c)
 
 
+cache = {}
 def next_ride(options: dict, total: int, selected: str, depth: int):
     """
     Determine the choices available after riding an additional ride at the park
     """
+    # Check cache at this position to see if it's already been calculated
+    cached_value = cache.get((depth, selected), None)
+
+    if cached_value is not None:
+        return cached_value
+
     # Determine what types of rides we can use (different type than the current selected type)
     keys = [key for key in options.keys() if key != selected]
     
@@ -31,6 +38,9 @@ def next_ride(options: dict, total: int, selected: str, depth: int):
     for key in keys:
         # Multiply the number of rides in the type by the number of rides that can follow
         sum += options[key] * next_ride(options, total, key, depth + 1)
+
+    # Cache the total number of possibilities at this level
+    cache[(depth, selected)] = sum
 
     # Return the total number of possibilities
     return sum
