@@ -23,18 +23,14 @@ def next_ride(options: dict, total: int, selected: str, depth: int):
     keys = [key for key in options.keys() if key != selected]
     
     # Base case - ensure we don't go pass the total number of rides
-    if depth > total:
+    if depth == total:
         return 1
 
     # For each type of ride, expand the tree of possibilities further
     sum = 0
     for key in keys:
-        if selected is not None: # When a ride type is selected, only sum different ride type possibilities
-            # Multiply the number of rides in the type by the number of rides that can follow
-            sum = options[selected] * next_ride(options, total, key, depth + 1)
-        else: # During the first case, sum all possible ride types
-            # Sum the possible ride types and the number of rides that can follow
-            sum += next_ride(options, total, key, depth + 1)
+        # Multiply the number of rides in the type by the number of rides that can follow
+        sum += options[key] * next_ride(options, total, key, depth + 1)
 
     # Return the total number of possibilities
     return sum
@@ -54,6 +50,5 @@ if __name__ == "__main__":
     # Determine the total number of possibilities
     total = next_ride(options_dict, num_rides, None, 0)
 
-    # Print the total possibilities
-    print(total)
-
+    # Print the total possibilities in the format for the problem
+    print(total % (10 ** 9 + 7))
