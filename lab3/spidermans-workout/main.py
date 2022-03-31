@@ -1,30 +1,57 @@
 cases = int(input())
 
 for _ in range(cases):
+    # Read in input
     moves = int(input())
-    distances = [int(val) for val in input().split(" ")]
+    movements = [int(val) for val in input().split(" ")]
+    num_movements = len(movements)
+    
+    # Determine the total distance, and the top possible valid distance (half of total)
+    total_distance = sum(movements)
+    top_distance = (total_distance // 2) + 1
 
-    tree = [(distances[0], distances[0], distances[0], "U")] # (Value, Max, Path)
-    edge_indexes = [0]
-    next_indexes = []
+    # If the total distance is odd, we cannot return to the ground
+    if total_distance % 2 != 0:
+        print("IMPOSSIBLE")
+        continue
 
-    for i, diff in enumerate(distances[1:]):
-        for tree_index in edge_indexes:
-            (current, max_val, min_val, path) = tree[tree_index]
+    # Initialize two grids - one for value, one for recording moves
+    state = []
+    moves = []
+    for i in range(num_movements + 1):
+        state_row = []
+        move_row = []
+        for j in range(top_distance):
+            state_row.append(total_distance)
+            move_row.append("")
+        state.append(state_row)
+        moves.append(move_row)
 
-            tree.append((current - diff, max_val, min(min_val, current - diff), path + "D"))
-            tree.append((current + diff, max(max_val, current + diff), min_val, path + "U"))
+    # Set our initial state, and initialize the move list
+    state[0][0] = 0
 
-            next_indexes.append((2 * tree_index) + 1)
-            next_indexes.append((2 * tree_index) + 2)
+    # Populate the state table by filling every value
+    for row in range(num_movements):
+        movement = movements[row]
 
-        edge_indexes = next_indexes
-        next_indexes = []
+        # For each column, determine the most optimal path to reach each value
+        for col in range(top_distance):
+            min_val = state[row][col - movement] if col - movement >= 0 else total_distance
+            max_val = state[row][col + movement] if col + movement < top_distance else total_distance
 
-    final_arr = list(filter(lambda x: x[0] == 0 and x[2] >= 0, tree[(2 * moves) - 1:]))
+            # Calculate the most effective path to get to this position
+            state[row + 1][col] = min(max(col, min_val), max_val)   
 
-    print(final_arr)
-    sorted_final_arr = sorted(final_arr, key=lambda x: x[1])
+            # Determine which move was made
+            if min_val != total_distance and max(col, min_val) < max_val:
+                # We moved from the left
+                moves[row + 1][col] = moves[row][col - movement] + "U"
+            elif max_val != total_distance:
+                # We moved from the right
+                moves[row + 1][col] = moves[row][col + movement] + "D"
 
-    print(sorted_final_arr[0][3]) if sorted_final_arr else print("IMPOSSIBLE")
-
+    # Print solution
+    if state[-1][0] == total_distance:
+        print("IMPOSSIBLE")
+    else:
+        print(moves[-1][0])
