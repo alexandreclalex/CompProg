@@ -1,0 +1,100 @@
+Alexandre Clavel
+David Yang
+Nathan Dupont
+
+2048
+    Document what the problem is asking for in your own words
+        Given a board and a move for the game 2048, calculate the next board
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Rotate board to align the bottom to the left
+        Slide all pieces to the left
+        Collapse neighboring identical pieces
+        Slide all pieces to the left
+        Rotate board to re-align bottom
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8722885	2022-03-30 12:08:44	2048	✅Accepted	0.05 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        Runtime: O(1)
+        Memory: O(1)
+            The runtime and memory do not change in the problem as it is always a 4x4 board and 1 move
+
+    What optimizations (if any) did you implement?
+        Rotating the board simplifies the calculations, and is relatively easy
+
+
+Hiding Places
+    Document what the problem is asking for in your own words
+        Given a chess board and a starting location, find all squares the most knight moves away
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Initialize chess board with value 6, the largest value
+        Start at root square, then recursively traverse
+        Check if we can improve the value
+        If we can, change the value, and traverse through the square
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        Not completed during lab time
+        8724254	2022-03-30 17:04:28	Hiding Places	✅Accepted	0.08 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = furthest knight moves on the board
+        Runtime: O(n log n)
+            Can be considered traversal of a tree with height n
+
+    What optimizations (if any) did you implement?
+        By knowing that the max value is 6, we can reduce propagation past 5
+
+Islands
+    Document what the problem is asking for in your own words
+        Given a grid of land, water, and clouds, what is the minimum number of islands in the grid
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Initialize count to 0
+        Iterate through grid
+            If we reach land, propagate through
+                Change land to count
+                Check adjacent tiles
+                    If land, repeat
+                    If clouds, propagate through
+                        If adjacent tile is clouds, repeat
+            Add 1 to count
+        Print out count
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8722692	2022-03-30 11:41:22	Islands	✅Accepted	0.10 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = total number of points in grid
+        Runtime: O(n)
+            We need to iterate through the whole grid in order to guaruntee we have checked all islands
+        Memory: O(n)
+            We need to initialize the array to iterate through it
+
+    What optimizations (if any) did you implement?
+        By connecting clouds to the nearest island, we optimize looking for islands. In addition, by keeping count of the islands as we join them, we avoid re-counting
+
+Massive Card Game
+    Document what the problem is asking for in your own words
+        Given a hand of cards, how many cards fall in the ranges given
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Sort the hand
+        for each range:
+            check if the range is within the min and max of the hand
+            Run 2 binary searches, and find the difference between the indices
+            Print difference in indices
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8723091	2022-03-30 12:42:27	Massive Card Game	✅Accepted	0.26 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of cards in hand
+        m = number of ranges to test
+        Runtime: O((n + m) log n)
+            Sort is n log n, and we need to run m binary searches, which are log n each
+
+    What optimizations (if any) did you implement?
+        By sorting the list, we can use binary search to improve our seaching. Also, we only need to sort the list once.
