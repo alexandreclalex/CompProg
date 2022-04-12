@@ -100,6 +100,8 @@ Pebble Solitaire
 
         Note: The maximum number of moves is unknown, but is known to be a constant, as the width of the board is also a constant (23). Since moves can only be made if certain conditions are met, not all moves will be evaluated, making the real runtime and memory complexity slightly lower. In addition, moves with the same state can be reached in multiple ways, which will only be cached a single time (dependent on the game board state).
 
+        This could also be argued to be constant time - since the size of the input board doesn't change.
+
     What optimizations (if any) did you implement?
         By implementing our cache based on every game state, we only need to evaluate a complete game once. Once every state has been evaluated, we can then look up the minimum pebbles for any of the game states through the cache, resolving the output of future games in O(1) time. 
 
