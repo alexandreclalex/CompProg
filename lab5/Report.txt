@@ -79,20 +79,31 @@ Pebble Solitaire
 
 Set!
     Document what the problem is asking for in your own words
-
+        Given a 3x4 (12 cards) board, find all the possible sets. A set can consist of 4 characteristics; A {1, 2, 3}
+         corresponding to the number of symbols; B {D, S, O} corresponding to diamonds, squiggles and ovals;
+         C {S, T, O} corresponding to solid, striped and open fill styles, D {R, G, P} corresponding to red, green. and
+         purple. A set is created from when three either have the same characteristic of one sort or each
+         card has pairwise difference
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
+        We turn each card into an array containing it's characteristics [1, 'D', 'S', 'G'] and then store it into another
+        array and iterate through ever possible combination of 3 cards since each card is
+        stored in an array slot from 1-12. When we check if a set of cards are valid, we iterate through each characteristic
+        and turn each card's according characteristic into a set with one another and check if there
+        are 2 elements in the set, if so return false. That indicates that it is not a set since if it was a set,
+        there would only be 1 element meaning all three card's certain characteristic is identical or if it was 3 that would mean
+        they are all different.
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
         8762488	2022-04-06 12:06:03	Set!	✅Accepted	0.06 s	Python 3
 
-
     What is the runtime complexity and memory complexity of your solution?
+        Runtime: O(n^3)
+        Memory: O(n)
 
 
     What optimizations (if any) did you implement?
+        Turning each card's characteristics into an array allows for easier iteration and turning three card's characteristic
+        into a set removes redundancy checks for a match,
 
-
-    How did other programming languages (if used) affect your submission results?
 
