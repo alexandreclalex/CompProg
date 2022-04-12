@@ -59,22 +59,54 @@ Guessing Game
 
 Pebble Solitaire
     Document what the problem is asking for in your own words
-
+        Pebble Solitaire is a single player game, where a user is tasked at removing as many pieces as they can from the board. In this game, there is a line of "holes" in a board, which are either empty, or filled with a pebble. Each turn, the user takes a pebble from one of the holes, and jumps it over an immediately neighboring pebble, moving the first pebble two spaces to the left or right, and removing the pebble that was jumped over. This continues until no more pebbles can be jumped, and the game concludes. The objective is to remove as many pebbles as possible before running out of moves.
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Since we know the game board is always 23 holes long, and we need to play through 1-10 games total, we decided that dynamic programming was needed to accomplish the problem. 
 
+        We started by enumerating a tree of all possible game states for the current game board - keeping track of all possible moves that could be made. As evaluated each board, we cached the lowest number of pieces that would remain with any given board state - such that it could be looked up if the same board was encountered. Since all games were played during the same simulation, this cache would also carry over from game to game. An example algorithm for this looks as follows:
+
+        For each board in the input:
+            [DFS] If the board state is in cache:
+                Return the minimum remaining pebbles for the board state
+            Else:
+                Get the moves you can make on the current board
+
+                If there are no more valid moves:
+                    Cache the number of stones on the current board to the board state
+                    Return the number of stones on the current board
+
+                Else:
+                    For each valid move:
+                        Play the move, and call the [DFS] function recursively
+                        Keep track of the minimum amount of stones from the current game board
+                        Cache the minimum amount of stones to the current game board state
+                        Return the mimimum amount of stones
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
         8762400	2022-04-06 11:48:40	Pebble Solitaire	✅Accepted	0.07 s	Python 3
 
 
     What is the runtime complexity and memory complexity of your solution?
+        Assumptions: 
+            Board length: m (constant)
+            Number of games: n
 
+        Runtime: O(2^m)
+            Our solution evaluates every unique move in the game a single time, caching the results of each board after the moves are evaluated. This means that with every unique board state, we need to evaluate if there are more moves, and if not, store the minimum number of remaining pebbles in the cache.
+
+        Memory: O(m * 2^m)
+            Our solution saves the number of minimum stones for every possible game board, after making all possible moves. Since each cell can either have a pebble or can be empty, this creates a binary tree with branches at a depth equal to the possible moves we can make. This means we are saving the game board for each possible moveset. This value is also a worst case - not all possible moves will make possible game states, and different sequences of moves will also yield the same game board, which will resolve to the same cache.
+
+        Note: The maximum number of moves is unknown, but is known to be a constant, as the width of the board is also a constant (23). Since moves can only be made if certain conditions are met, not all moves will be evaluated, making the real runtime and memory complexity slightly lower. In addition, moves with the same state can be reached in multiple ways, which will only be cached a single time (dependent on the game board state).
 
     What optimizations (if any) did you implement?
+        By implementing our cache based on every game state, we only need to evaluate a complete game once. Once every state has been evaluated, we can then look up the minimum pebbles for any of the game states through the cache, resolving the output of future games in O(1) time. 
 
+        In addition, since we only cache the steps that are needed to complete any given game, future games in the sequence will only evaluate new game states that haven't been explored in the previous games, minimizing the evaluation needed for any given sequence of games.
 
     How did other programming languages (if used) affect your submission results?
+        We utilized Python for our submission, and were able to get our solution to solve the problem in significantly less time than the limit - completing in 0.07s with a limit of 1s. We may be able to get the completion time down to 0.01-0.03s if using C/C++, but since that doesn't benefit us when completing the problem, we stuck to using Python.
 
 
 Set!
