@@ -4,41 +4,58 @@ Nathan Dupont
 
 Bachet's Game
     Document what the problem is asking for in your own words
-
+        Bachets game is a game of removal of pieces. Whoever removes the last piece is the winner. Given a number of pieces, and a number of valid moves, predict who wins
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
+        We used an array based approach marking whether p1 wins or loses.
+        We iterate through the array, starting at 0. For each number:
+            Assume we lose
+            iterate through the possible moves, for each move:
+                If we are one move away from a loss, we can force p2 to lose, i.e. win.
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        Was not Completed in lab time, submission after lab
+        2022-04-06 14:17:30	Bachet's Game	✅Accepted	0.16 s	C++
 
 
     What is the runtime complexity and memory complexity of your solution?
-
+        n = number of test cases
+        m = number of pieces in the test case
+        Runtime: O(n*m)
+            each of the n test cases requires iterating through the array up to m
+        Memory: O(1)
+            since we know that m cannot exceed 1,000,000, we use the same array for all cases of size 1,000,001
 
     What optimizations (if any) did you implement?
-
+        By resuing the same array for all cases, we save on allocating an array every time
 
     How did other programming languages (if used) affect your submission results?
-
+        Python was simply not fast enough for this problem, I rewrote it in C++, which was fast enough
 
 Guessing Game
     Document what the problem is asking for in your own words
-
+        Given the transcript from a guessing game, determine if the person giving the answers is being honest
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
+        iterate through the guesses, for each:
+            set min to -1 and max to 11
+            if the guess is "too low" or "too high":
+                adjust the bounds of our possible valid numbers if the guess is less than min or greater than max
+            if the guess is "right on", check that the last guess was within the bounds:
+                if it is in bounds, he may be honest, otherwise he is lying
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8762299	2022-04-06 11:29:17	Guessing Game	✅Accepted	0.08 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
-
+        n = number of guesses
+        Runtime: O(n)
+            Need to run checks on each guess
+        Memory: O(1)
+            We only have 2 variables, min and max
 
     What optimizations (if any) did you implement?
-
-
-    How did other programming languages (if used) affect your submission results?
-
+        By putting the guess qualifiers in a list, it was easier to program.
 
 Pebble Solitaire
     Document what the problem is asking for in your own words
@@ -48,6 +65,7 @@ Pebble Solitaire
 
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8762400	2022-04-06 11:48:40	Pebble Solitaire	✅Accepted	0.07 s	Python 3
 
 
     What is the runtime complexity and memory complexity of your solution?
@@ -67,6 +85,7 @@ Set!
 
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8762488	2022-04-06 12:06:03	Set!	✅Accepted	0.06 s	Python 3
 
 
     What is the runtime complexity and memory complexity of your solution?
