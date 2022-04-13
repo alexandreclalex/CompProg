@@ -1,30 +1,55 @@
 import sys
-def do_it():
-    num_cities, num_lines = list(map(int, sys.stdin.readline()[:-1].split(' ')))
 
-    adj_list = []
-    for i in range(num_cities):
-        adj_list.append([None]*num_cities)
-        
-    for i in range(1, num_lines + 1):
-        x, y = list(map(int, sys.stdin.readline()[:-1].split(' ')))
-        adj_list[x-1][y-1] = i
-        adj_list[y-1][x-1] = i
+# Read in the number of cities, and number of train lines
+num_cities, num_lines = list(map(int, sys.stdin.readline()[:-1].split(' ')))
 
-    path = []
-    for i in range(num_cities-1):
-        if adj_list[i][i+1] is None:
-            print('impossible')
-            return []
-        else:
-            path.append(adj_list[i][i+1])
+# Create sets to store connections
+remaining_connections = set()
+established_connections = set()
 
-    if adj_list[num_cities - 1][0] is None:
-        print('impossible')
-        return []
-    else:
-        path.append(adj_list[num_cities - 1][0])
-    return path
-        
-for elem in do_it():
-    print(elem)
+# Add all endpoints to the set
+for i in range(1, num_cities + 1):
+    remaining_connections.add(i)
+
+# Read in each of the input lines (offset by one to match line index)
+for i in range(1, num_lines + 1):
+    # Determine the from and to nodes of the train line
+    from_node, to_node = list(map(int, sys.stdin.readline()[:-1].split(' ')))
+
+    # Find the minimum and maximum values of the two nodes
+    min_val = min(from_node, to_node)
+    max_val = max(from_node, to_node)
+
+    added_min = False
+    added_max = False
+
+    # If the min is 1, and the max is equal to the number of cities, this is the ride back
+    if min_val == 1 and max_val == num_cities:
+        # Create an established connection between the end and the beginning (at the end of the set)
+        established_connections.add((num_cities, i))
+        added_min = True 
+    
+    # If the train line moves a single node (increases by one)    
+    if (max_val - min_val == 1 and max_val in remaining_connections):
+        # Add the destination to the established connections, with the line that takes you there
+        established_connections.add((max_val - 1, i))
+        added_max = True
+
+    # Remove the destination from the connections
+    if added_min:
+        remaining_connections.discard(min_val)
+    
+    if added_max:
+        remaining_connections.discard(max_val)    
+
+# Check if there are remaining connections that weren't made
+if len(remaining_connections) > 0:
+    # Print impossible if so
+    print('impossible')
+else:
+    # Sort the established connections based on their end node (putting the end->beginning path last)
+    established_connections = sorted(established_connections, key=lambda x: x[0])
+
+    # Print out the connections
+    for conn in established_connections:
+        print(conn[1])
