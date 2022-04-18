@@ -33,12 +33,9 @@ if __name__ == '__main__':
         count = 0
         for i in range(len(lines)):
             for j in range(i+1, len(lines)):
-                ij = intersection(lines[i], lines[j])
-                if ij is not None:
+                if intersection(lines[i], lines[j]) is not None:
                     for k in range(j+1, len(lines)):
-                        jk = intersection(lines[j], lines[k])
-                        ik = intersection(lines[i], lines[k])
-                        if jk is not None and ik is not None and ij != jk and ij != ik and ik != jk:
+                        if intersection(lines[j], lines[k]) is not None and intersection(lines[i], lines[k]) is not None:
                             count += 1
                         
         print(count)
