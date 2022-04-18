@@ -1,6 +1,12 @@
-4 5
-#####
-#cDc#
-#c#cD
-#####
-3 2
+10 10
+##########
+#cc#ccccc#
+#cc#cccccD
+#cccccccc#
+########c#
+#cccccccc#
+###cccccc#
+#c#cccccc#
+#cccccccc#
+##########
+2 2
