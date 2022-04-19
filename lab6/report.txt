@@ -2,46 +2,96 @@ Alexandre Clavel
 David Yang
 Nathan Dupont
 
-Elegant Showroom
-    Document what the problem is asking for in your own words
-
-    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
-    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
-    What is the runtime complexity and memory complexity of your solution?
-
-    What optimizations (if any) did you implement?
- 
-    How did other programming languages (if used) affect your submission results?
- 
 Counting Triangles
     Document what the problem is asking for in your own words
+        Given a list of line segments, find how many triangles are formed by the segments
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Store all of the lines in an array
+        Iterate through all possible groups of 3 lines
+            If all 3 lines intersect, add 1 to the counter of triangles
+        
+        Finding if 2 lines intersect:
+            Find where the lines would intersect if they were infinite length
+            Verify that the coordinates of the intersection are in the bounds of the segments
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8823307	2022-04-18 00:08:19	Counting Triangles	✅Accepted	0.75 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
+        n = number of line segments
+        Runtime: O(n^3)
+            If all lines intersect, we need to check all trios of lines
+        Memory: O(n)
+            We only need to store the lines once, in an array
 
     What optimizations (if any) did you implement?
+        If the first 2 lines in a trio don't intersect, we dont bother finding a third line to complete the trio
+
+Elegant Showroom
+    Document what the problem is asking for in your own words
+        Given the layout of a car dealer's showroom, find the minimum number of cars you need to move to get a specific car out of the showroom
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        We store the showroom as a 2d array of chars, and replace the charachters with ints as we find how many cars to move to get to any given point
+        We store the list of coordinates to explore in a queue, starting with the coordinates of the given car
+        We iterate until the queue is empty
+            Pop the next coordinate off of the queue
+            Iterate through the neighbors
+                If the neigbor is a wall, we ignore it
+                If the neighbor is a car, we give it the current score + 1, and add it to the queue
+                If the neigbor is a door
+                    If the door is on the edge, we print out the score and quit
+                    If the door is not on the edge, we give it the current score, and add it to the front of the queue
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        We were not able to get kattis to accept our solution, we got the first 5 cases, and fail on the 6th
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of nodes in the showroom
+        Runtime: O(n)
+            Worst case, we need to explore all of the nodes in the room to find a path
+        Memory: O(n)
+            worst case, all the nodes we explore will be in the queue
+
+    What optimizations (if any) did you implement?
+        Using a queue, we know that the first solution we find is the best, so we can stop searching, and print the result
+ 
+Erdos Numbers
+    Document what the problem is asking for in your own words
+        Given a list of co-authorships, find the number of co-authorships required to link an author to Erdos
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Store a list of targets, in which we store the authors whose numbers we need to find
+        Store a dict of authors, where the key is the author's name, and the value is a set of co-authors
+        Create a dict of scores, and give Erdos a score of 0
+        Create a queue to iterate through, and start with Erdos
+            Pop the author oof of the queue
+            Iterate through the co-authors
+                If they do not have a score, or we can improve their score, give them a score of author's score + 1, and add them to the queue
+
+        Iterate through the targets
+            If the target has a score, print their score, otherwise print 'no-connection'
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8831687	12:28:31	Erdős Numbers	✅Accepted	0.10 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of authors
+        m = maximum Erdos number
+
+        Runtime: O(n * m)
+            Worst case, we iterate through the entire authorship tree, with width n and depth m
+        Memory: O(n)
+            We must store one author entry for all authors named in the problem
+
+    What optimizations (if any) did you implement?
+        By using a set, we saved needing to check for duplicates before adding co-authors
  
     How did other programming languages (if used) affect your submission results?
+        Python's fast in operator made the code much easier to spped up.
 
 Trip Planning
-    Document what the problem is asking for in your own words
-
-    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
-    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
-    What is the runtime complexity and memory complexity of your solution?
-
-    What optimizations (if any) did you implement?
- 
-    How did other programming languages (if used) affect your submission results?
-
-Erdos Numbers
     Document what the problem is asking for in your own words
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
