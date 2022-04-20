@@ -93,13 +93,48 @@ Erdos Numbers
 
 Trip Planning
     Document what the problem is asking for in your own words
+        Given a total of N cities that an individual wants to visit in sequential order, and a list of bi-directional train lines between any two of the cities, determine if it is possible to complete the trip, and the order of the train routes that needs to be taken.
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Read in the number of cities, and the number of train lines in the input
+        For each of the cities:
+            Add the integer to a set indicating the cities that are still unconnected
+        For each train line:
+            Determine the starting and ending point of the route
+            Sort the endpoints to get the lowest and highest number city
+            If the endpoints are the starting and ending nodes:
+                Mark the return trip as present
+            If the endpoints are one city apart and the ending city hasn't been visited:
+                Mark the ending city as visited
+            Remove the visited nodes from the set
+
+        If there are any cities still remaining in the sequence:
+            Print impossible
+        Else:
+            Print out the connections in the order that they were made
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8802955	2022-04-13 16:52:08	Trip Planning	✅Accepted	1.26 s	Python 3
+    
     What is the runtime complexity and memory complexity of your solution?
+        Assumptions:
+            Number of cities: n
+            Number of train lines: m
+
+        This solution iterates through each of the cities to map them to a remaining connection, and then iterates through each of the train lines to determine which cities have possible lines attached to them.
+
+        Finally, if there are connections to every city, each city is iterated through, in order to print out the train lines to each.
+
+        Time complexity: O(2n + m)
+
+        For the memory, this solution just stores integers to represent each of the cities that is present. This leads to a small memory footprint, as each integer is stored within a set. Once a single city is found with a connection, it is moved to a separate set, paired with the route number.
+
+        Memory complexity: O(n)
 
     What optimizations (if any) did you implement?
- 
+        I utilized sets to allow for ordering of the values, hoping to gain a small speed boost over utilizing lists to store the remaining and established connections. 
+        
+        Utilizing sets, we no longer need to search the cities as a graph for a solution. Instead, since we always want to move one city at a time, we can iterate through all of the paths once, and mark the cities as reachable if they have a path from the previous city to the next. This vastly reduces the time complexity from using a search algorithm, and allowed for effective performance.
+
     How did other programming languages (if used) affect your submission results?
+        Our primary implementation was written in Python, and was able to effectively solve the problem with much less time and memory than the provided constraints.

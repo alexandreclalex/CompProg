@@ -3,7 +3,7 @@ import sys
 # Read in the number of cities, and number of train lines
 num_cities, num_lines = list(map(int, sys.stdin.readline()[:-1].split(' ')))
 
-# Create sets to store connections
+# Create sets to store the cities that still need to be connected
 remaining_connections = set()
 established_connections = set()
 
@@ -20,6 +20,7 @@ for i in range(1, num_lines + 1):
     min_val = min(from_node, to_node)
     max_val = max(from_node, to_node)
 
+    # Keep track of if the min and max trips have been added
     added_min = False
     added_max = False
 
@@ -39,6 +40,7 @@ for i in range(1, num_lines + 1):
     if added_min:
         remaining_connections.discard(min_val)
     
+    # Remove the destination from the connections
     if added_max:
         remaining_connections.discard(max_val)    
 
