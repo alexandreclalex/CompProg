@@ -1,5 +1,6 @@
 import sys
 from math import sqrt
+from fractions import Fraction
 
 minimum, maximum = -1000000, 1000000
 
@@ -17,14 +18,14 @@ def in_bounds(v, b1, b2):
 def intersection(l1, l2):
     '''Find the point of intersection of 2 lines, given 2 line segments of the form [x1, y1, x2, y2], return None otherwise'''
     # Find determinant
-    D = float((l1[0] - l1[2])*(l2[1] - l2[3]) - (l1[1] - l1[3])*(l2[0] - l2[2]))
+    D = (l1[0] - l1[2])*(l2[1] - l2[3]) - (l1[1] - l1[3])*(l2[0] - l2[2])
     if D == 0:
         return None, False
     
     
     # Calculate intersection points
-    x = ((l1[0]*l1[3] - l1[1]*l1[2])*(l2[0] - l2[2]) - (l1[0] - l1[2])*(l2[0]*l2[3] - l2[1]*l2[2])) / D
-    y = ((l1[0]*l1[3] - l1[1]*l1[2])*(l2[1] - l2[3]) - (l1[1] - l1[3])*(l2[0]*l2[3] - l2[1]*l2[2])) / D
+    x = Fraction(((l1[0]*l1[3] - l1[1]*l1[2])*(l2[0] - l2[2]) - (l1[0] - l1[2])*(l2[0]*l2[3] - l2[1]*l2[2])), D)
+    y = Fraction(((l1[0]*l1[3] - l1[1]*l1[2])*(l2[1] - l2[3]) - (l1[1] - l1[3])*(l2[0]*l2[3] - l2[1]*l2[2])), D)
     
     # Verify intersection is in the segment
     within_bounds = in_bounds(x, l1[0], l1[2]) and in_bounds(x, l2[0], l2[2]) and in_bounds(y, l1[1], l1[3]) and in_bounds(y, l2[1], l2[3])
@@ -48,20 +49,17 @@ def dist(p1, p2):
     dx = p2[0] - p1[0]
     dy = p2[1] - p1[1]
     return sqrt(dx*dx + dy*dy)
-
-def segment_length(seg):
-    return dist(seg[0:2], seg[2:4])
     
 def is_joint_coincident(l1, l2):
     '''Check if 2 coincident lines are only touching at one point, or no points, None if there are inf points'''
     # Create list of all points
-    points = list(set([(l1[0], l1[1]),
+    points = [(l1[0], l1[1]),
             (l1[2], l1[3]),
             (l2[0], l2[1]),
-            (l2[2], l2[3])]))
+            (l2[2], l2[3])]
     
     # Find the max distance between 2 points, and the sum of the line segments
-    sum_of_seg = segment_length(l1) + segment_length(l2)
+    sum_of_seg = dist(l1[0:2], l2[2:4]) + dist(l1[0:2], l2[2:4])
     max_dist = 0
     for i in range(len(points) - 1):
         for j in range(i+1, len(points)):
@@ -84,7 +82,7 @@ if __name__ == '__main__':
     
     # Iterate through the lines in the test case, and read them in
     for i in range(num_lines):
-        lines.append(list(map(int, sys.stdin.readline()[:-1].split(' '))))
+        lines.append(tuple(map(int, sys.stdin.readline().split())))
 
     points = set()
     
