@@ -4,24 +4,43 @@ import sys
 n = int(sys.stdin.readline()[:-1])
 
 pebbles = tuple(map(int, sys.stdin.readline().split()))
-reachable = [False]*len(pebbles)
 
-queue = deque()           
+graph = [[None]*n, [None]*n]
+visited = [False]*n
 
-def dfs(index):
-    if reachable[index]:
-        return
-    reachable[index] = True
-    for i in range(n):
-        if pebbles[index] + pebbles[i] == abs(i - index):
-            queue.append(i)
-            
+for i in range(n):
+    if i+pebbles[i] < n:
+        if graph[0][i+pebbles[i]] is None:
+            graph[0][i+pebbles[i]] = []
+        graph[0][i+pebbles[i]].append(i)
+    if i-pebbles[i] >= 0:
+        if graph[1][i-pebbles[i]] is None:
+            graph[1][i-pebbles[i]] = []
+        graph[1][i-pebbles[i]].append(i)
+    
+queue = deque()
 queue.append(0)
-while len(queue) > 0:
-    dfs(queue.popleft())
+visited[0] == 1
 
-for i in range(len(reachable) - 1, 0, -1):
-    if reachable[i]:
+while len(queue) > 0:
+    node = queue.popleft()
+    mid = node + pebbles[node]
+    if mid < n:
+        if graph[1][mid] is not None:
+            for next_node in graph[1][mid]:
+                if not visited[next_node]:
+                    visited[next_node] = True
+                    queue.append(next_node)
+    mid = node - pebbles[node]
+    if mid >= 0:
+        if graph[0][mid] is not None:
+            for next_node in graph[0][mid]:
+                if not visited[next_node]:
+                    visited[next_node] = True
+                    queue.append(next_node)
+    
+for i in range(len(visited) - 1, 0, -1):
+    if visited[i]:
         print(i)
         exit(0)
 
