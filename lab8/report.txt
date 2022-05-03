@@ -1,0 +1,109 @@
+Alexandre Clavel
+David Yang
+Nathan Dupont
+
+Airport Coffee
+    Document what the problem is asking for in your own words
+        A person is attempting to walk through the airport to get to their gate, along the way they stop for coffee which increased their speed.
+        Given the distance they need to walk, the speed they walk at with and without coffee, the time it takes before drinking and the time it takes to drink.
+        Find when the person should stop for coffee at the given coffee shops along the way.
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+       I used a while loop to increment when the person should stop to drink the coffee and then increment the total distance by how far the person has traveled.
+       This runs into the issue of iterating through too many times since the distance can be over 10^11 but the person moves only 135 cm per iteration.
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+       8907887 01:16:11	Airport Coffee	Time Limit Exceeded	> 4.00 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        Since you are iterating through the distances
+        Time complexity: O(n)
+
+        To store the cart locations requires O(n) memory.
+        Memory complexity:O(n)
+
+    What optimizations (if any) did you implement?
+        Trying to find the next closest cart is tricky that I(David) was unable to solve. Also to avoid iterating through the while loop will help as well. Maybe
+        there is another way to go around this.
+    How did other programming languages (if used) affect your submission results?
+        We did not attempt other languages.
+
+CrossCross
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+
+    What is the runtime complexity and memory complexity of your solution?
+        Time complexity:
+        Memory complexity:
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+DNA
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+
+    What is the runtime complexity and memory complexity of your solution?
+        Time complexity:
+        Memory complexity:
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+Jumping Yoshi
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+
+    What is the runtime complexity and memory complexity of your solution?
+        Time complexity:
+        Memory complexity:
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+Product Digit
+    Document what the problem is asking for in your own words
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+
+    What is the runtime complexity and memory complexity of your solution?
+        Time complexity:
+        Memory complexity:
+
+    What optimizations (if any) did you implement?
+
+    How did other programming languages (if used) affect your submission results?
+
+Taboo
+Document what the problem is asking for in your own words
+
+Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+
+Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+
+
+What is the runtime complexity and memory complexity of your solution?
+    Time complexity:
+    Memory complexity:
+
+What optimizations (if any) did you implement?
+
+How did other programming languages (if used) affect your submission results?
