@@ -20,4 +20,4 @@ class Trie:
 if __name__ == '__main__':       
     n = int(sys.stdin.readline()[:-1])
 
-    root = Node(none)
+    root = Node(None)

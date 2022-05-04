@@ -49,17 +49,20 @@ def dist(p1, p2):
     dx = p2[0] - p1[0]
     dy = p2[1] - p1[1]
     return sqrt(dx*dx + dy*dy)
+
+def segment_length(seg):
+    return dist(seg[0:2], seg[2:4])
     
 def is_joint_coincident(l1, l2):
     '''Check if 2 coincident lines are only touching at one point, or no points, None if there are inf points'''
     # Create list of all points
-    points = [(l1[0], l1[1]),
+    points = list(set([(l1[0], l1[1]),
             (l1[2], l1[3]),
             (l2[0], l2[1]),
-            (l2[2], l2[3])]
+            (l2[2], l2[3])]))
     
     # Find the max distance between 2 points, and the sum of the line segments
-    sum_of_seg = dist(l1[0:2], l2[2:4]) + dist(l1[0:2], l2[2:4])
+    sum_of_seg = segment_length(l1) + segment_length(l2)
     max_dist = 0
     for i in range(len(points) - 1):
         for j in range(i+1, len(points)):
