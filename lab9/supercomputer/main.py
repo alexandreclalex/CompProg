@@ -2,7 +2,7 @@ import sys
 
 # Read in params
 n, k = map(int, sys.stdin.readline().split())
-arr = [0] * 6
+arr = [0] * n
 
 
 for x in range(k):
