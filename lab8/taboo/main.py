@@ -59,12 +59,3 @@ if __name__ == '__main__':
         #             remaining_vals.add(j + current_max)
         # else:
         #     remaining_vals.discard(clue_val)
-
-    
-
-                
-
-        
-
-            
-        

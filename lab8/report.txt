@@ -25,58 +25,107 @@ Airport Coffee
     What optimizations (if any) did you implement?
         Trying to find the next closest cart is tricky that I(David) was unable to solve. Also to avoid iterating through the while loop will help as well. Maybe
         there is another way to go around this.
-    How did other programming languages (if used) affect your submission results?
-        We did not attempt other languages.
 
-CrossCross
+CrissCross
     Document what the problem is asking for in your own words
+        Given many line segments, what is the number of distinct intersections of the segments
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Read in lines
+        For each pair of lines, check if there is an intersection.
+            If there is no intersection, they are either parallel, or coincident
+                Check if the lines are parallel
+                Check if axis intercepts are the same
+                If the lines are coincident, check if they overlap
+                Find the largest distance (d) between 2 points, and the sum of the lengths of the 2 segments (SoS)
+                If d > SoS: no intersection
+                If d = SoS: one intersection
+                If d < SoS: infinite intersections
+                Add the intersection to a set
+        Output the size of the set
+        If there is an infinite amount of intersections, we print -1 and exit
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8877598	2022-04-27 11:06:09	Criss-Cross	✅Accepted	3.55 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
-        Time complexity:
-        Memory complexity:
+        n = number of lines
+        Time complexity: O(n^2)
+            Need to check all of the pairs of lines
+        Memory complexity: O(n^2)
+            At worst, every line will have a distinct intersection
 
     What optimizations (if any) did you implement?
-
-    How did other programming languages (if used) affect your submission results?
+        Using set allows for Python to deal with deduplication
 
 DNA
     Document what the problem is asking for in your own words
+        Given a sequence of a's and b's, while being able to flip one bit or a series of bits, 
+        what is the minimum amout of steps to make the sequence all a's
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        First flip all groups of one charachter
+        Then count the number of groups
+        If the last group is B, add one move to make it A
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8877763	2022-04-27 11:40:51	DNA	✅Accepted	0.16 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
-        Time complexity:
-        Memory complexity:
+        n = length of the sequence
+        Time complexity: O(n)
+            Need to iterate through the entire sequence
+        Memory complexity: O(n)
+            Need to store sequence in an array
 
     What optimizations (if any) did you implement?
-
-    How did other programming languages (if used) affect your submission results?
+        Flipping single bits made the code easier to implement
 
 Jumping Yoshi
     Document what the problem is asking for in your own words
+        Given a sequence of stones and the stipulation that you may only jump from a to b 
+        if the number of pips on a and b is equal to the distance between a and b, what is the furthest you can get
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Create a graph of nodes reachable from all points at the beginning
+        Do a bfs to mark all reachable nodes
+        Find the righmost node that is reachable
 
     Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
+        8903947	01:23:53	Jumping Yoshi	✅Accepted	0.32 s	Python 3
 
     What is the runtime complexity and memory complexity of your solution?
-        Time complexity:
-        Memory complexity:
+        n = number of pebbles
+        Time complexity: O(n)
+            Need to iterate through all pebbles in bfs
+        Memory complexity: O(n^2)
+            Worst case, all nodes are reachable by all other nodes
 
     What optimizations (if any) did you implement?
-
-    How did other programming languages (if used) affect your submission results?
+        By only creating a list when a node needs to be added, we save on memory
 
 Product Digit
+    Document what the problem is asking for in your own words
+        Given a and b, what is the occurrence of each digit when digits are recursively multiplied
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        We know that after one iteration, the only prime factors are 2, 3, 5, and 7
+        Thus we can cache the results for all results after one step, there are only 33k
+        Then we iterate from a to b, and count the occurrences of digits
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        We were not able to solve without a TLE
+
+    What is the runtime complexity and memory complexity of your solution?
+        Time complexity: O(b-a)
+            We need to iterate through all numbers between a and b
+        Memory complexity: O(1)
+            We only store the digit counts, so constant memory
+
+    What optimizations (if any) did you implement?
+        Caching the results after one step speeds up calculation immensly
+
+Taboo
     Document what the problem is asking for in your own words
 
     Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
@@ -91,19 +140,3 @@ Product Digit
     What optimizations (if any) did you implement?
 
     How did other programming languages (if used) affect your submission results?
-
-Taboo
-Document what the problem is asking for in your own words
-
-Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
-
-Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
-
-
-What is the runtime complexity and memory complexity of your solution?
-    Time complexity:
-    Memory complexity:
-
-What optimizations (if any) did you implement?
-
-How did other programming languages (if used) affect your submission results?
