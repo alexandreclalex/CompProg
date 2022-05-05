@@ -1,0 +1,101 @@
+Alexandre Clavel
+David Yang
+Nathan Dupont
+
+Feast For Cats
+    Document what the problem is asking for in your own words
+        Given a number of cats a given distance from each other,
+        Given a specific amount of milk,
+        and given that you spill 1ml of milk per meter you walk,
+        Is it possible to give all cats at least 1 ml of milk?
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Create a graph
+        Use prim's algorithm to generate a minimum spanning Tree
+        If the distance + number of cats <= milk, we can give them all milk
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8912161	2022-05-04 22:45:33	A Feast For Cats	✅Accepted	0.82 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of cats
+        Time complexity: O(n log n)
+            Prim's algorithm generates a mst in v log v time
+        Memory complexity: O(n^2)
+            We need to populate an adjacency list, of size n by n
+
+    What optimizations (if any) did you implement?
+        Since the min distance between any 2 cats is 1, we can short circuit if there is less than 2*cats - 1 milk
+
+    How did other programming languages (if used) affect your submission results?
+        Python's heapq library allowed for fast heap implementation
+
+Firetrucks are Red
+    Document what the problem is asking for in your own words
+        Given a list of people and numerical attributes, find a set of rules that link the people
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Create 2 dicts, one to keep track of attributes, and one to keep track of people
+        We then perform a bfs to link all nodes together
+        If we cannot link all nodes together, print "impossible"
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8911035	2022-05-04 12:40:43	Firetrucks Are Red	✅Accepted	0.45 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of people
+        m = number of attributes
+        Time complexity: O(n*m)
+            Worst case, we need to iterate through all people in all attributes
+        Memory complexity: O(n*m)
+            Worst case, all people will have all attributes, and therefore will have a 2d array of dimension n*m
+
+    What optimizations (if any) did you implement?
+        By keeping track of which attributes we have exhaustively searched, we can optimize our search
+
+Kitten on a Tree
+    Document what the problem is asking for in your own words
+        Given a list of neighboring nodes, and the location of a cat, find the way for the cat to leave the tree
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        Create a dict to backtrace the algorithm
+        Perform a DFS, and keep track of the path
+        Iterate through the backtrace, and find the path out of the tree
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8910787	2022-05-04 11:32:13	Kitten on a Tree	✅Accepted	0.06 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of nodes
+        Time complexity: O(n)
+            Worst case, we need to explore all nodes in the DFS
+        Memory complexity: O(1)
+            We initialize the array to the max size every time
+
+    What optimizations (if any) did you implement?
+        Since we know there can be at most 100 nodes, 
+        we create an array of size 100 to store all of the nodes, even though there may be less than 100
+
+Supercomputer
+    Document what the problem is asking for in your own words
+        Given a block of memory, support two operations
+            Flip one bit
+            Count the number of ones in between 2 indices
+
+    Describe the algorithm and data structure you used to solve (or attempt to solve) the problem
+        We used a Fenwick tree to store the bits, and implemented the flip and count operations
+        We then iterate through the operations and execute them
+
+    Save the output from your last submission to Kattis (e.g. a screenshot of the web interface) for your last submission during the lab competition
+        8912189	2022-05-04 22:59:14	Supercomputer	✅Accepted	0.19 s	Python 3
+
+    What is the runtime complexity and memory complexity of your solution?
+        n = number of operaions to execute
+        m = number of bits in memory
+        Time complexity: O(n log m)
+            We need to do n operations on the fenwick tree, each taking log m time
+        Memory complexity: O(m)
+            The two backing arrays in the fenwick tree are of size m
+
+    What optimizations (if any) did you implement?
+        We do not convert ints until we need to, meaning we potentially save one int conversion per operation
