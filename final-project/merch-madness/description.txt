@@ -1,0 +1,21 @@
+New York is full of high end stores and boutiques, that sell merchandise that goes for hundreds, or even thousands on the market. Often times, new product drops are accompanied by massive lines of customers, looking to become one of the first to get their hands on a new, limited-edition product when released.
+
+Speaking of limited-edition, Apple has just announced the unveil of their new product, the Apple IPad Air Pro MAX Silver Edition, with limited quantities at their M stores located in the Manhattan area, each with N allocated stock of their new product.
+
+With the news dropping of this new release, a total of P Apple fans randomly scattered around the Mahattan area rush to their nearest Apple store, franticly trying to get one of the newly released products. Each of these individuals is able to move towards their nearest store at the same speed as everyone else. In addition, since the stores are located in the middle of the city, someone can only move either horizontally OR vertically at any point in time.
+
+Employees know that stock is limited, and if people arrive to a store that is out of stock, they will refer the customers to the nearest store with remaining stock. 
+
+What is the time that it will take for everyone to get their product? 
+
+Input
+=====
+
+The first line will an integer M, representing the number of 
+
+Output
+======
+
+For each test case, output the amount of time (as a whole number) that it will take for everyone to arrive to a store and get their product. 
+
+If there is not enough stock for everyone, print "out of stock". 
