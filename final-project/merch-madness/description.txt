@@ -11,7 +11,13 @@ What is the time that it will take for everyone to get their product?
 Input
 =====
 
-The first line will an integer M, representing the number of 
+The first line will consist of two integers, X and Y, consisting of the width and height of the city in blocks.
+
+The second line will consist of an integer M, representing the number of stores within the city limits.
+
+The next M lines will consist of three integers, X, Y, and N, which are the (X, Y) coordinate of the store in the city limits, and the capacity N for the total number of items at the store.
+
+The next line will consist of an integer P specifying the number of people within the city, followed by P lines consisting of two integers, X and Y, for the (X, Y) coordinates of each person within the city.
 
 Output
 ======
