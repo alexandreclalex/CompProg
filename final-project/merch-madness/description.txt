@@ -11,7 +11,7 @@ What is the time that it will take for everyone to get their product?
 Input
 =====
 
-The first line will consist of two integers, X and Y, consisting of the width and height of the city in blocks. Both values will be bounded by 0 <= X,Y <= 1000.
+The first line will consist of two integers, X and Y, consisting of the width and height of the city in blocks, respectively. Both values will be bounded by 0 <= X,Y <= 1000.
 
 The second line will consist of an integer M, representing the number of stores within the city limits. This will be bounded by 1 <= M <= 100.
 
