@@ -127,9 +127,9 @@ def allocate_person(starting_time):
         # Decrement stock if the store has enough for the individual
         stores_stock[id] = stores_stock[id] - 1
 
+    # Return the amount of time it took to get the closest person to their store
     return distance - starting_time
         
-
 
 def execute():
     """
