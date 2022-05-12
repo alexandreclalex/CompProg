@@ -9,14 +9,16 @@ def get_distance(x1, y1, x2, y2):
     return int(math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2)))
 
 
-def find_closest_bus():
-    for x in people:
-        person = people[x]
-        for y in stores:
-            distance = get_distance(person[0], person[1], stores[y][0], stores[y][1])
-            if person[2] > distance:
-                person[2] = distance
-                person[3] = y
+def find_closest_store(person):
+    for y in stores:
+        distance = get_distance(person[0], person[1], stores[y][0], stores[y][1])
+        if person[2] > distance:
+            person[2] = distance
+            person[3] = y
+
+
+def get_total_distance():
+    return "TODO"
 
 
 def execute():
@@ -29,10 +31,10 @@ def execute():
     for x in range(num_people):
         person = sys.stdin.readline().strip("\n").split(" ")
         people[x] = [int(person[0]), int(person[1]), sys.maxsize, -1]
-    find_closest_bus()
     for x in people:
-        print(people[x])
-    print(stores[12])
+        person = people[x]
+        find_closest_store(person)
+    print(get_total_distance())
 
 
 if __name__ == "__main__":
