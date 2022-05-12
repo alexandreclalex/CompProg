@@ -56,6 +56,17 @@ class TestMerchMadness(unittest.TestCase):
     def test_square_redirect_success(self, stdout):
         mm.execute()
 
+        expected_output = f"250"
+
+        actual_output = stdout.getvalue().strip("\n")
+
+        self.assertEqual(expected_output, actual_output)
+
+    @patch('sys.stdin', open("inputs/squareInputRedirectCorners.txt"))
+    @patch('sys.stdout', new_callable = StringIO)
+    def test_square_redirect_corners_success(self, stdout):
+        mm.execute()
+
         expected_output = f"350"
 
         actual_output = stdout.getvalue().strip("\n")
