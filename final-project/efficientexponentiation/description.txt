@@ -1,0 +1,34 @@
+A tech startup has decided to create a new, better compiler for C++. 
+When compiling C++ code, the startup wants to minimize the number of operations to raise a number to a power.
+Currently, they have a solution that works well, but investors want the compiler to be optimal.
+However, the programmers, being programmers, want to avoid implementing the work.
+However, in order to show that their current solution is good enough, 
+they need to know the minimum number of multiplications to raise n to a power
+
+If they want to calculate n^15, they can easily do it with 14 multiplications:
+    n^15 = n * n * n * n * n * n * n * n * n * n * n * n * n * n * n
+
+With their current binary solution, they can do it it in 6 multiplications:
+    n^2 = n * n
+    n^4 = n^2 * n^2
+    n^8 = n^4 * n^4
+    n^12 = n^8 * n^4
+    n^14 = n^12 * n^4
+    n^15 = n^14 * n
+
+However, they can optimally do it in 5 multiplications:
+    n^2 = n * n
+    n^3 = n^2 * n
+    n^6 = n^3 * n^3
+    n^12 = n^6 * n^6
+    n^15 = n^12 * n^3
+
+Input
+=====
+The input comsists of a single integer 2 <= n <= 8192
+n^p is guaranteed to be possible to calculate in at most 13 multiplications
+
+Output
+======
+Output a single integer, the minimum number of multiplications required to calculate n^p
+
