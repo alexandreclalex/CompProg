@@ -1,3 +1,6 @@
+Problem: Merch Madness
+Group: Nathan DuPont, David Yang, Alex Clavel
+
 New York is full of high end stores and boutiques, that sell merchandise that goes for hundreds, or even thousands on the market. Often times, new product drops are accompanied by massive lines of customers, looking to become one of the first to get their hands on a new, limited-edition product when released.
 
 Speaking of limited-edition, Apple has just announced the unveil of their new product, the Apple IPad Air Pro MAX Silver Edition, with limited quantities at their M stores located in the Manhattan area, each with N allocated stock of their new product.

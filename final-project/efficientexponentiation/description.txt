@@ -1,3 +1,6 @@
+Problem: Efficient Exponentiation
+Group: Nathan DuPont, David Yang, Alex Clavel
+
 A tech startup has decided to create a new, better compiler for C++. 
 When compiling C++ code, the startup wants to minimize the number of operations to raise a number to a power.
 Currently, they have a solution that works well, but investors want the compiler to be optimal.
