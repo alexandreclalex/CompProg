@@ -32,3 +32,13 @@ Output
 ======
 Output a single integer, the minimum number of multiplications required to calculate n^p
 
+Sample
+======
+Input
+607
+
+Output
+13
+
+Time Limit: 8 second
+Memory Limit: 1024 MB
