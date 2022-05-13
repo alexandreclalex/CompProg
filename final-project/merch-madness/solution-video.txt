@@ -1,3 +1,6 @@
 The solution video can be found at:
 
 https://youtu.be/JN_lZK-FGZ4
+
+NOTE: A slide regarding sample input and the final time complexity have been added to the PowerPoint,
+and not incorporated into the video. These can be found in the attached PowerPoint.
