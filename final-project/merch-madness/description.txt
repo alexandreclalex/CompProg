@@ -43,3 +43,6 @@ Input
 
 Output
 50
+
+Time Limit: 1 second
+Memory Limit: 1024 MB
