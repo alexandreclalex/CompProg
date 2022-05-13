@@ -50,7 +50,7 @@ with open("generated_input.txt", "w") as f:
         used_coords.append([False] * (city_width + 1))
 
     # Determine the number of stores, making sure there is at least 1 person
-    num_stores = min(int(random.random() * NUM_STORES_MAX), (remaining_locations - 1))
+    num_stores = NUM_STORES_MAX#min(int(random.random() * NUM_STORES_MAX), (remaining_locations - 1))
 
     f.write(f"{num_stores}\n")
 
@@ -60,7 +60,7 @@ with open("generated_input.txt", "w") as f:
         (x, y) = get_new_location(used_coords, city_width, city_height)
 
         # Determine stock quantity
-        capacity = int(random.random() * STORE_CAPACITY_MAX)
+        capacity = STORE_CAPACITY_MAX#int(random.random() * STORE_CAPACITY_MAX)
 
         f.write(f"{i} {x} {y} {capacity}\n")
 
@@ -68,7 +68,7 @@ with open("generated_input.txt", "w") as f:
         remaining_locations -= 1
 
     # Determine the number of people
-    num_people = min(int(random.random() * NUM_PEOPLE_MAX), remaining_locations)
+    num_people = NUM_PEOPLE_MAX#min(int(random.random() * NUM_PEOPLE_MAX), remaining_locations)
 
     f.write(f"{num_people}\n")
 
