@@ -76,12 +76,12 @@ def process_person():
 
     # Iterate through each store
     for i in stores.keys():
-        # Extract the store's X and Y location
-        store_x, store_y = stores[i]
-
         # If the store has no stock, don't add it to the neighboring list
         if stores_stock[i] == 0:
             continue
+        
+        # Extract the store's X and Y location
+        store_x, store_y = stores[i]
 
         # Determine the distance to the store
         distance = dist(x, y, store_x, store_y)
